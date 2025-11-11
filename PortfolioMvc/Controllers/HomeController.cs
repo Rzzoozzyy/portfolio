@@ -35,8 +35,8 @@ namespace PortfolioMvc.Controllers
             return new List<ProjectModel>
             {
                 new ProjectModel { Title = "ERP System", Description = "Optimized ERP modules using ASP.NET Core & Azure SQL.", Link = "#" },
-                new ProjectModel { Title = "Visitor Management System", Description = "RBAC, QR code check-ins, audit logging.", Link = "#" },
-                new ProjectModel { Title = "School Management System", Description = "Student & admin portal improving reporting accuracy.", Link = "#" }
+                new ProjectModel { Title = "Visitor Management System", Description = "RBAC, check-ins, audit logging.", Link = "#" },
+                new ProjectModel { Title = "School Management System", Description = "Student & admin portal improving reporting accuracy, online exams.", Link = "#" }
             };
         }
 
@@ -63,22 +63,34 @@ namespace PortfolioMvc.Controllers
         [HttpPost]
         public async Task<IActionResult> Contact(ContactModel model, [FromServices] IConfiguration config)
         {
-            if (!ModelState.IsValid) return View(model);
+            if (!ModelState.IsValid)
+            {
+                ViewBag.ErrorMessage = "Please fill in all fields correctly.";
+                return View(model);
+            }
 
-            var smtp = config.GetSection("Smtp");
-            var message = new MimeMessage();
-            message.From.Add(MailboxAddress.Parse(model.Email));
-            message.To.Add(MailboxAddress.Parse(smtp["User"]));
-            message.Subject = $"Portfolio Contact: {model.Name}";
-            message.Body = new TextPart("plain") { Text = model.Message };
+            try
+            {
+                var smtp = config.GetSection("Smtp");
+                var message = new MimeMessage();
+                message.From.Add(MailboxAddress.Parse(model.Email));
+                message.To.Add(MailboxAddress.Parse(smtp["User"]));
+                message.Subject = $"Portfolio Contact: {model.Name}";
+                message.Body = new TextPart("plain") { Text = model.Message };
 
-            using var client = new SmtpClient();
-            await client.ConnectAsync(smtp["Host"], int.Parse(smtp["Port"]), MailKit.Security.SecureSocketOptions.StartTls);
-            await client.AuthenticateAsync(smtp["User"], smtp["Pass"]);
-            await client.SendAsync(message);
-            await client.DisconnectAsync(true);
+                using var client = new SmtpClient();
+                await client.ConnectAsync(smtp["Host"], int.Parse(smtp["Port"]), MailKit.Security.SecureSocketOptions.StartTls);
+                await client.AuthenticateAsync(smtp["User"], smtp["Pass"]);
+                await client.SendAsync(message);
+                await client.DisconnectAsync(true);
 
-            ViewBag.Message = "Message sent successfully!";
+                ViewBag.Message = "Message sent successfully!";
+            }
+            catch (Exception ex)
+            {
+                ViewBag.ErrorMessage = "Error sending message. Please try again later.";
+            }
+
             return View();
         }
 

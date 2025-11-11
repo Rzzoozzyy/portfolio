@@ -26,24 +26,20 @@
 <section id="portfolio" class="portfolio section light-background py-5">
     <div class="container" data-aos="fade-up">
 
-        <div class="section-title text-center mb-5">
+        <div class="section-title text-center mb-5" style="display:none;">
             <h2>My Portfolio</h2>
             <p>A showcase of key projects and solutions I’ve developed using modern .NET technologies.</p>
+
+            <!-- Portfolio Filters -->
+            <ul id="portfolio-filters" class="list-inline mt-4">
+                <li class="list-inline-item active" data-filter="*">All</li>
+                <li class="list-inline-item" data-filter=".backend">Backend</li>
+                <li class="list-inline-item" data-filter=".frontend">Frontend</li>
+                <li class="list-inline-item" data-filter=".cloud">Cloud</li>
+            </ul>
         </div>
 
-        <!-- Portfolio Filters -->
-        <div class="row mb-4">
-            <div class="col-lg-12 d-flex justify-content-center">
-                <ul id="portfolio-filters" class="list-inline">
-                    <li class="list-inline-item active" data-filter="*">All</li>
-                    <li class="list-inline-item" data-filter=".backend">Backend</li>
-                    <li class="list-inline-item" data-filter=".frontend">Frontend</li>
-                    <li class="list-inline-item" data-filter=".cloud">Cloud</li>
-                </ul>
-            </div>
-        </div>
-
-        <div class="row portfolio-container gy-4">
+        <div class="row portfolio-container gy-4" style="display:none;">
             @foreach (var p in Model)
             {
                 <div class="col-lg-4 col-md-6 portfolio-item backend" data-aos="zoom-in">
@@ -87,7 +83,7 @@
                         <i class="bi bi-gear service-icon"></i>
                         <h4 class="fw-bold">@p.Title</h4>
                         <p>@p.Description</p>
-                        <a href="@p.Link" class="btn btn-outline-primary mt-2" target="_blank">View Project</a>
+                        <a href="@p.Link" class="btn btn-outline-primary mt-2" target="_blank" style="display:none;">View Project</a>
                     </div>
                 </div>
             }
