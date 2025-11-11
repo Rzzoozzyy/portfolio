@@ -17,25 +17,45 @@ namespace PortfolioMvc.Controllers
             _logger = logger;
         }
 
-        public IActionResult Index()
-        {
-            return View();
-        }
         public IActionResult Portfolio()
         {
-            return View();
-        }
-        public IActionResult Projects()
-        {
-            var projects = new List<ProjectModel>
-            {
-                new ProjectModel { Title = "ERP System", Description = "Optimized ERP modules using ASP.NET Core & Azure SQL.", Link = "#" },
-                new ProjectModel { Title = "Visitor Management System", Description = "RBAC, QR check-in, audit logging.", Link = "#" },
-                new ProjectModel { Title = "School Management", Description = "Student & admin portal improving reporting.", Link = "#" }
-            };
+            var projects = GetProjects();
             return View(projects);
         }
+
+        public IActionResult Projects()
+        {
+            var projects = GetProjects();
+            return View(projects);
+        }
+
+        // Helper method to avoid duplication
+        private List<ProjectModel> GetProjects()
+        {
+            return new List<ProjectModel>
+            {
+                new ProjectModel { Title = "ERP System", Description = "Optimized ERP modules using ASP.NET Core & Azure SQL.", Link = "#" },
+                new ProjectModel { Title = "Visitor Management System", Description = "RBAC, QR code check-ins, audit logging.", Link = "#" },
+                new ProjectModel { Title = "School Management System", Description = "Student & admin portal improving reporting accuracy.", Link = "#" }
+            };
+        }
+
         public IActionResult Contact()
+        {
+            return View();
+        }
+
+        public IActionResult About()
+        {
+            return View();
+        }
+
+        public IActionResult Resume()
+        {
+            return View();
+        }
+
+        public IActionResult Services()
         {
             return View();
         }

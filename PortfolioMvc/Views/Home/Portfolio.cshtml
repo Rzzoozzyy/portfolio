@@ -1,112 +1,145 @@
-﻿@{
+﻿@model List<PortfolioMvc.Models.ProjectModel>
+
+@{
     ViewBag.Title = "Portfolio | Razaz Ayoub";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<section class="container mt-5">
-    <div class="text-center mb-5">
-        <h1 class="display-4 fw-bold">Razaz MohammedAlfatih Taha Ayoub</h1>
-        <p class="lead">Senior .NET Developer</p>
-        <p><i class="fa fa-map-marker"></i> Abu Dhabi, UAE · <i class="fa fa-phone"></i> +971 55 212 0140 · <i class="fa fa-envelope"></i> <a href="mailto:RuzzaAyoub@gmail.com">RuzzaAyoub@gmail.com</a></p>
-    </div>
+<!-- ======= Hero Section ======= -->
+<section id="hero" class="hero section">
+    <img src="/assets/img/hero-bg.png" alt="" data-aos="fade-in">
 
-    <!-- Summary -->
-    <div class="mb-5">
-        <h2 class="fw-bold">Professional Summary</h2>
-        <p>
-            Senior .NET Developer with over 7 years of experience designing and implementing ERP, CRM, and enterprise-grade systems across both remote and on-site environments.
-            Highly skilled in ASP.NET Core, EF Core, SQL Server, and Azure cloud architecture. Proven success in leading development teams, optimizing performance, and automating CI/CD pipelines.
-        </p>
-    </div>
-
-    <!-- Skills -->
-    <div class="mb-5">
-        <h2 class="fw-bold">Technical Skills</h2>
-        <ul>
-            <li><strong>Backend:</strong> ASP.NET Core, Web API, C#, EF Core, Identity</li>
-            <li><strong>Frontend:</strong> jQuery, Bootstrap, React</li>
-            <li><strong>Database:</strong> SQL Server, Entity Framework, LINQ</li>
-            <li><strong>Cloud & DevOps:</strong> Azure App Service, Azure SQL, CI/CD, Azure DevOps</li>
-            <li><strong>Architecture:</strong> Microservices, REST APIs, SOLID Principles, Clean Architecture</li>
-            <li><strong>Tools:</strong> Git, Azure Boards, Postman</li>
-        </ul>
-    </div>
-
-    <!-- Projects -->
-    <div class="mb-5">
-        <h2 class="fw-bold">Key Projects</h2>
-
-        <div class="card mb-3 p-3">
-            <h4>ERP System</h4>
-            <p>Developed and optimized ERP modules using ASP.NET Core, EF Core, and Azure SQL, improving workflow automation and reducing manual reporting time by 40%.</p>
-        </div>
-
-        <div class="card mb-3 p-3">
-            <h4>Public Service Platforms</h4>
-            <p>Built and deployed public portals serving thousands of daily users, reducing manual service operations by 50%.</p>
-        </div>
-
-        <div class="card mb-3 p-3">
-            <h4>Visitor Management System</h4>
-            <p>Designed secure visitor registration platform with RBAC, QR code check-ins, and audit logging.</p>
-        </div>
-
-        <div class="card mb-3 p-3">
-            <h4>School Management System</h4>
-            <p>Developed student and administrative modules, improving academic data handling and reporting accuracy.</p>
+    <div class="container text-center" data-aos="zoom-out" data-aos-delay="100">
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <h2>Razaz Ayoub</h2>
+                <p>
+                    Senior .NET Developer & Software Architect with 7+ years of experience building enterprise-grade applications.
+                </p>
+                <a href="/Home/About" class="btn-get-started">About Me</a>
+            </div>
         </div>
     </div>
-
-    <!-- Experience -->
-    <div class="mb-5">
-        <h2 class="fw-bold">Professional Experience</h2>
-
-        <div class="mb-4">
-            <h4>Senior .NET Developer — DevSharp IT Solution</h4>
-            <small>Mar 2020 – Present</small>
-            <ul>
-                <li>Led redesign of ERP modules increasing data accuracy by 25% and reducing reporting time by 40%.</li>
-                <li>Developed RESTful APIs and external integrations.</li>
-                <li>Implemented CI/CD pipelines — reduced deployment time 50%.</li>
-                <li>Mentored junior developers and improved code quality through reviews.</li>
-            </ul>
-        </div>
-
-        <div class="mb-4">
-            <h4>Junior .NET Developer — Nubi IT Service</h4>
-            <small>Apr 2018 – Jan 2020</small>
-            <ul>
-                <li>Developed business management systems using ASP.NET MVC and EF Core.</li>
-                <li>Optimized SQL queries and improved DB performance.</li>
-            </ul>
-        </div>
-
-        <div class="mb-4">
-            <h4>.NET Developer — TPRA "NTC"</h4>
-            <small>Jun 2016 – Nov 2017</small>
-            <ul>
-                <li>Implemented business applications including Visitor Management System.</li>
-                <li>Improved query performance by 30%.</li>
-            </ul>
-        </div>
-    </div>
-
-    <!-- Education -->
-    <div class="mb-5">
-        <h2 class="fw-bold">Education</h2>
-        <p>
-            BSc in Information and Communication Technology (ICT)<br>
-            University of Science & Technology, Sudan (2012–2016)
-        </p>
-    </div>
-
-    <!-- Languages -->
-    <div class="mb-5">
-        <h2 class="fw-bold">Languages</h2>
-        <ul>
-            <li>Arabic — Native</li>
-            <li>English — Professional</li>
-        </ul>
-    </div>
-
 </section>
+
+<!-- ======= Portfolio Section ======= -->
+<section id="portfolio" class="portfolio section light-background py-5">
+    <div class="container" data-aos="fade-up">
+
+        <div class="section-title text-center mb-5">
+            <h2>My Portfolio</h2>
+            <p>A showcase of key projects and solutions I’ve developed using modern .NET technologies.</p>
+        </div>
+
+        <!-- Portfolio Filters -->
+        <div class="row mb-4">
+            <div class="col-lg-12 d-flex justify-content-center">
+                <ul id="portfolio-filters" class="list-inline">
+                    <li class="list-inline-item active" data-filter="*">All</li>
+                    <li class="list-inline-item" data-filter=".backend">Backend</li>
+                    <li class="list-inline-item" data-filter=".frontend">Frontend</li>
+                    <li class="list-inline-item" data-filter=".cloud">Cloud</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="row portfolio-container gy-4">
+            @foreach (var p in Model)
+            {
+                <div class="col-lg-4 col-md-6 portfolio-item backend" data-aos="zoom-in">
+                    <div class="portfolio-wrap shadow-sm rounded bg-white h-100 p-3 text-center">
+                        @* Optional image: <img src="@p.ImageUrl" class="img-fluid rounded mb-3" alt="@p.Title" /> *@
+                        <div class="portfolio-info">
+                            <h4 class="fw-bold">@p.Title</h4>
+                            <p class="text-muted">@p.Description</p>
+                            <div class="portfolio-links mt-2">
+                                <a href="@p.Link" target="_blank" title="More Details" class="btn btn-outline-primary">
+                                    <i class="bi bi-link-45deg"></i> View
+                                </a>
+                                @* Lightbox Example:
+                                <a href="@p.ImageUrl" data-gallery="portfolioGallery" class="portfolio-lightbox" title="@p.Title">
+                                    <i class="bi bi-arrows-fullscreen"></i>
+                                </a>
+                                *@
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</section>
+
+<!-- ======= Key Projects Section ======= -->
+<section id="projects" class="services section py-5">
+    <div class="container" data-aos="fade-up">
+
+        <div class="section-title text-center mb-5">
+            <h2>Key Projects</h2>
+            <p>Highlighting some of the major systems I’ve built.</p>
+        </div>
+
+        <div class="row gy-4 justify-content-center">
+            @foreach (var p in Model)
+            {
+                <div class="col-lg-4 col-md-6" data-aos="zoom-in">
+                    <div class="service-item text-center p-4 shadow-sm rounded h-100">
+                        <i class="bi bi-gear service-icon"></i>
+                        <h4 class="fw-bold">@p.Title</h4>
+                        <p>@p.Description</p>
+                        <a href="@p.Link" class="btn btn-outline-primary mt-2" target="_blank">View Project</a>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</section>
+
+<!-- ======= Contact Section ======= -->
+<section id="contact" class="contact section light-background py-5">
+    <div class="container" data-aos="fade-up">
+
+        <div class="section-title text-center mb-5">
+            <h2>Contact Me</h2>
+            <p>Feel free to reach out for freelance, consulting, or full-time opportunities.</p>
+        </div>
+
+        <div class="row justify-content-center text-center">
+            <div class="col-lg-8">
+                <p><i class="bi bi-geo-alt"></i> Abu Dhabi, UAE</p>
+                <p><i class="bi bi-envelope"></i> <a href="mailto:RuzzaAyoub@gmail.com">RuzzaAyoub@gmail.com</a></p>
+                <p>
+                    <a href="tel:+971552120140">
+                        <i class="bi bi-phone"></i> +971 55 212 0140
+                    </a>
+                </p>
+
+                <div class="social-links mt-3" style="display:none;">
+                    <a href="#" class="twitter" style="display:none;" target="_blank"><i class="bi bi-twitter-x"></i></a>
+                    <a href="https://www.facebook.com/RuzzaAyoub" class="facebook" target="_blank"><i class="bi bi-facebook"></i></a>
+                    <a href="https://wa.me/+971552120140" class="whatsapp" target="_blank">
+                        <i class="bi bi-whatsapp"></i>
+                    </a>
+
+                    <a href="#" class="instagram" style="display:none;" target="_blank"><i class="bi bi-instagram"></i></a>
+                    <a href="https://www.linkedin.com/in/razaz-ayoub-4b93b3129/" class="linkedin" target="_blank"><i class="bi bi-linkedin"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+@section Scripts {
+    <script>
+        // Portfolio filtering with Isotope
+        var portfolioIsotope = new Isotope('.portfolio-container', {
+            itemSelector: '.portfolio-item'
+        });
+
+        $('#portfolio-filters li').on('click', function () {
+            $('#portfolio-filters li').removeClass('active');
+            $(this).addClass('active');
+            portfolioIsotope.arrange({ filter: $(this).data('filter') });
+        });
+    </script>
+}

@@ -1,36 +1,110 @@
-﻿<!DOCTYPE html>
-<html>
+﻿@* Views/Shared/_Layout.cshtml *@
+<!DOCTYPE html>
+<html lang="en">
 <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>@ViewBag.Title - Portfolio</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewBag.Title</title>
+
+    <!-- Favicons -->
+    <link href="~/assets/img/favicon.png" rel="icon" />
+    <link href="~/assets/img/apple-touch-icon.png" rel="apple-touch-icon" />
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com" rel="preconnect" />
+    <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Poppins:wght@400;700&family=Raleway:wght@400;700&display=swap" rel="stylesheet" />
+
+    <!-- Vendor CSS Files -->
+    <link href="~/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet" />
+    <link href="~/assets/vendor/aos/aos.css" rel="stylesheet" />
+    <link href="~/assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet" />
+    <link href="~/assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet" />
+
+    <!-- Main CSS File -->
+    <link href="~/assets/css/main.css" rel="stylesheet" />
+
+    @RenderSection("Styles", required: false)
 </head>
-<body>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="/">Razaz Ayoub</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"><a class="nav-link" href="/Home/Portfolio">Portfolio</a></li>
-                    <li class="nav-item"><a class="nav-link" href="/Home/Projects">Projects</a></li>
-                    <li class="nav-item"><a class="nav-link" href="/Home/Contact">Contact</a></li>
+
+<body class="index-page">
+
+    <!-- ======= Header ======= -->
+    <header id="header" class="header d-flex align-items-center light-background sticky-top">
+        <div class="container-fluid position-relative d-flex align-items-center justify-content-between">
+            <a href="/" class="logo d-flex align-items-center me-auto me-xl-0">
+                <h1 class="sitename">Razaz Ayoub</h1>
+            </a>
+
+            <nav id="navmenu" class="navmenu">
+                <ul>
+                    <li><a href="/" class="active">Home</a></li>
+                    <li><a href="/Home/About">About</a></li>
+                    <li><a href="/Home/Resume">Resume</a></li>
+                    <li><a href="/Home/Services">Services</a></li>
+                    <li><a href="/Home/Projects">Projects</a></li>
+                    <li><a href="/Home/Contact">Contact</a></li>
                 </ul>
+                <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
+            </nav>
+
+            <div class="header-social-links">
+                <a href="#" class="twitter" style="display:none;" target="_blank"><i class="bi bi-twitter-x"></i></a>
+                <a href="https://www.facebook.com/RuzzaAyoub" class="facebook" target="_blank"><i class="bi bi-facebook"></i></a>
+                <a href="https://wa.me/+971552120140" class="whatsapp" target="_blank">
+                    <i class="bi bi-whatsapp"></i>
+                </a>
+
+                <a href="#" class="instagram" style="display:none;" target="_blank"><i class="bi bi-instagram"></i></a>
+                <a href="https://www.linkedin.com/in/razaz-ayoub-4b93b3129/" class="linkedin" target="_blank"><i class="bi bi-linkedin"></i></a>
             </div>
         </div>
-    </nav>
+    </header>
 
-    <div class="container mt-4">
+    <!-- ======= Main Content ======= -->
+    <main class="main">
         @RenderBody()
-    </div>
+    </main>
 
-    <footer class="text-center mt-5 py-3 bg-light">
-        © @DateTime.Now.Year - Razaz Ayoub
+    <!-- ======= Footer ======= -->
+    <footer id="footer" class="footer light-background">
+        <div class="container">
+            <div class="copyright text-center">
+                <p>© @DateTime.Now.Year <strong class="px-1 sitename">Razaz Ayoub</strong> — All Rights Reserved</p>
+            </div>
+            <div class="social-links d-flex justify-content-center">
+                <a href="#" style="display:none;" target="_blank"><i class="bi bi-twitter-x"></i></a>
+                <a href="https://www.facebook.com/RuzzaAyoub" target="_blank"><i class="bi bi-facebook"></i></a>
+                <a href="https://wa.me/+971552120140" target="_blank"><i class="bi bi-whatsapp"></i></a>
+                <a href="#" style="display:none;" target="_blank"><i class="bi bi-instagram"></i></a>
+                <a href="https://www.linkedin.com/in/razaz-ayoub-4b93b3129/" target="_blank"><i class="bi bi-linkedin"></i></a>
+            </div>
+        </div>
     </footer>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Scroll Top -->
+    <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center">
+        <i class="bi bi-arrow-up-short"></i>
+    </a>
+
+    <!-- Preloader -->
+    <div id="preloader"></div>
+
+    <!-- Vendor JS Files -->
+    <script src="~/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="~/assets/vendor/php-email-form/validate.js"></script>
+    <script src="~/assets/vendor/aos/aos.js"></script>
+    <script src="~/assets/vendor/waypoints/noframework.waypoints.js"></script>
+    <script src="~/assets/vendor/purecounter/purecounter_vanilla.js"></script>
+    <script src="~/assets/vendor/swiper/swiper-bundle.min.js"></script>
+    <script src="~/assets/vendor/glightbox/js/glightbox.min.js"></script>
+    <script src="~/assets/vendor/imagesloaded/imagesloaded.pkgd.min.js"></script>
+    <script src="~/assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+
+    <!-- Main JS File -->
+    <script src="~/assets/js/main.js"></script>
+
+    @RenderSection("Scripts", required: false)
 </body>
 </html>
