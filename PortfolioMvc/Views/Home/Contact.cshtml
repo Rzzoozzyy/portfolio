@@ -1,0 +1,25 @@
+﻿@model PortfolioMvc.Models.ContactModel
+@{
+    ViewBag.Title = "Contact";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<h2 class="fw-bold mb-4">Contact</h2>
+@if (ViewBag.Message != null)
+{
+    <div class="alert alert-success">@ViewBag.Message</div>
+}
+<form method="post" class="w-50">
+    <div class="mb-3">
+        <label>Name</label>
+        <input class="form-control" asp-for="Name" />
+    </div>
+    <div class="mb-3">
+        <label>Email</label>
+        <input class="form-control" asp-for="Email" />
+    </div>
+    <div class="mb-3">
+        <label>Message</label>
+        <textarea class="form-control" asp-for="Message"></textarea>
+    </div>
+    <button class="btn btn-primary" type="submit">Send</button>
+</form>
