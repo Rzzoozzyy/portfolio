@@ -33,12 +33,35 @@ namespace PortfolioMvc.Controllers
         // Helper method to avoid duplication
         private List<ProjectModel> GetProjects()
         {
-            return new List<ProjectModel>
+            var projects = new List<ProjectModel>
             {
-                new ProjectModel { Title = "ERP System", Description = "Optimized ERP modules using ASP.NET Core & Azure SQL.", Link = "#" },
-                new ProjectModel { Title = "Visitor Management System", Description = "RBAC, check-ins, audit logging.", Link = "#" },
-                new ProjectModel { Title = "School Management System", Description = "Student & admin portal improving reporting accuracy, online exams.", Link = "#" }
+                new ProjectModel {
+                    Title = "ERP System",
+                    Description = "Optimized ERP modules using ASP.NET Core & Azure SQL.",
+                    Link = "#",
+                    ImageUrl = "/assets/img/erp.png"
+                },
+                new ProjectModel {
+                    Title = "Visitor Management System",
+                    Description = "RBAC, check-ins, and audit logging for security operations.",
+                    Link = "#",
+                    ImageUrl = "/assets/img/visitor.png"
+                },
+                new ProjectModel {
+                    Title = "School Management System",
+                    Description = "Student & admin portal improving reporting accuracy and online exams.",
+                    Link = "#",
+                    ImageUrl = "/assets/img/school.png"
+                },
+                 new ProjectModel {
+                    Title = "Public Services System",
+                    Description = "Web-based platform for managing government services, citizen requests, and feedback with dashboard analytics.",
+                    Link = "#",
+                    ImageUrl = "/assets/img/public.png"
+                }
             };
+
+            return projects;
         }
 
         public IActionResult Contact()

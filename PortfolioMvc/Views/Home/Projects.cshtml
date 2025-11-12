@@ -5,24 +5,36 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<section id="projects" class="portfolio section py-5">
+<section id="projects" class="portfolio section py-5 bg-light">
     <div class="container" data-aos="fade-up">
 
         <div class="section-title text-center mb-5">
-            <h2>Projects</h2>
-            <p>Here’s a selection of the systems I’ve developed using modern .NET technologies.</p>
+            <h2 class="fw-bold text-uppercase">Key Projects</h2>
+            <p class="text-muted">
+                Highlighting some of the major systems I’ve built using modern .NET technologies.
+            </p>
         </div>
 
-        <div class="row portfolio-container gy-4 justify-content-center">
+        <div class="row gy-4 justify-content-center">
             @foreach (var p in Model)
             {
-                <div class="col-lg-4 col-md-6" data-aos="zoom-in">
-                    <div class="service-item text-center p-4 shadow-sm rounded h-100">
-                        <i class="bi bi-gear service-icon"></i>
-                        <h4 class="fw-bold">@p.Title</h4>
-                        <p>@p.Description</p>
-                        <a href="@p.Link" class="btn btn-outline-primary mt-2" target="_blank" style="display:none;">View Project</a>
-                    </div>
+                <div class="col-lg-4 col-md-6" data-aos="zoom-in" data-aos-delay="100">
+                    <a href="@p.Link" target="_blank" class="text-decoration-none project-card">
+                        <div class="card border-0 shadow-sm rounded-4 overflow-hidden h-100 position-relative">
+                            <div class="project-img-wrapper">
+                                <img src="@p.ImageUrl" alt="@p.Title" class="img-fluid project-img" />
+                                <div class="overlay d-flex align-items-center justify-content-center">
+                                    <span class="btn btn-light fw-semibold rounded-pill px-4 py-2 hideme">
+                                        <i class="bi bi-box-arrow-up-right me-2"></i> View Project
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="card-body text-center p-4">
+                                <h5 class="fw-bold text-dark mb-2">@p.Title</h5>
+                                <p class="text-muted small mb-0">@p.Description</p>
+                            </div>
+                        </div>
+                    </a>
                 </div>
             }
         </div>

@@ -24,6 +24,7 @@
 
     <!-- Main CSS File -->
     <link href="~/assets/css/main.css" rel="stylesheet" />
+    <link href="~/assets/css/custom.css" rel="stylesheet" />
 
     @RenderSection("Styles", required: false)
 </head>
@@ -44,19 +45,19 @@
                     <li><a href="/Home/Resume">Resume</a></li>
                     <li><a href="/Home/Services">Services</a></li>
                     <li><a href="/Home/Projects">Projects</a></li>
-                    <li style="display:none;"><a href="/Home/Contact">Contact</a></li>
+                    <li class="hideme"><a href="/Home/Contact">Contact</a></li>
                 </ul>
                 <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
             </nav>
 
             <div class="header-social-links">
-                <a href="#" class="twitter" style="display:none;" target="_blank"><i class="bi bi-twitter-x"></i></a>
+                <a href="#" class="twitter hideme" target="_blank"><i class="bi bi-twitter-x"></i></a>
                 <a href="https://www.facebook.com/RuzzaAyoub" class="facebook" target="_blank"><i class="bi bi-facebook"></i></a>
-                <a href="https://wa.me/+971552120140" class="whatsapp" target="_blank">
+                <a href="https://wa.me/+971552120140" class="whatsapp hideme" target="_blank">
                     <i class="bi bi-whatsapp"></i>
                 </a>
 
-                <a href="#" class="instagram" style="display:none;" target="_blank"><i class="bi bi-instagram"></i></a>
+                <a href="#" class="instagram hideme" target="_blank"><i class="bi bi-instagram"></i></a>
                 <a href="https://www.linkedin.com/in/razaz-ayoub-4b93b3129/" class="linkedin" target="_blank"><i class="bi bi-linkedin"></i></a>
             </div>
         </div>
@@ -75,10 +76,10 @@
                 <p>© @DateTime.Now.Year <strong class="px-1 sitename">Razaz Ayoub</strong> — All Rights Reserved</p>
             </div>
             <div class="social-links d-flex justify-content-center">
-                <a href="#" style="display:none;" target="_blank"><i class="bi bi-twitter-x"></i></a>
+                <a href="#" class="hideme" target="_blank"><i class="bi bi-twitter-x"></i></a>
                 <a href="https://www.facebook.com/RuzzaAyoub" target="_blank"><i class="bi bi-facebook"></i></a>
-                <a href="https://wa.me/+971552120140" target="_blank"><i class="bi bi-whatsapp"></i></a>
-                <a href="#" style="display:none;" target="_blank"><i class="bi bi-instagram"></i></a>
+                <a href="https://wa.me/+971552120140" class="hideme" target="_blank"><i class="bi bi-whatsapp"></i></a>
+                <a href="#" class="hideme" target="_blank"><i class="bi bi-instagram"></i></a>
                 <a href="https://www.linkedin.com/in/razaz-ayoub-4b93b3129/" target="_blank"><i class="bi bi-linkedin"></i></a>
             </div>
         </div>
