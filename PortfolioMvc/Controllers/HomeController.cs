@@ -74,7 +74,7 @@ namespace PortfolioMvc.Controllers
                 message.Subject = $"Portfolio Contact: {model.Name}";
                 message.Body = new TextPart("plain")
                 {
-                    Text = $"From: {model.Name} ({model.Email})\n\n{model.Message}"
+                    Text = $"From: {model.Name} ({model.Email})\n\n Subject: {model.Subject} \n\n Msg: {model.Message}"
                 };
 
                 using var client = new SmtpClient();
