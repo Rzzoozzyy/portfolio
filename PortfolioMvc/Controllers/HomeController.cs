@@ -1,4 +1,4 @@
-using MailKit.Net.Smtp;
+﻿using MailKit.Net.Smtp;
 using MailKit.Security;
 using Microsoft.AspNetCore.Mvc;
 using MimeKit;
@@ -66,26 +66,38 @@ namespace PortfolioMvc.Controllers
         {
             if (!ModelState.IsValid) return View(model);
 
-            var message = new MimeMessage();
-            message.From.Add(MailboxAddress.Parse(model.Email));
-            message.To.Add(MailboxAddress.Parse(Environment.GetEnvironmentVariable("SMTP_USER")));
-            message.Subject = $"Portfolio Contact: {model.Name}";
-            message.Body = new TextPart("plain") { Text = model.Message };
+            try
+            {
+                var message = new MimeMessage();
+                message.From.Add(MailboxAddress.Parse(model.Email));
+                message.To.Add(MailboxAddress.Parse("ruzzaayoub@gmail.com")); // 📩 your inbox email
+                message.Subject = $"Portfolio Contact: {model.Name}";
+                message.Body = new TextPart("plain")
+                {
+                    Text = $"From: {model.Name} ({model.Email})\n\n{model.Message}"
+                };
 
-            using var client = new SmtpClient();
-            await client.ConnectAsync(
-                Environment.GetEnvironmentVariable("SMTP_HOST"),
-                int.Parse(Environment.GetEnvironmentVariable("SMTP_PORT")),
-                bool.Parse(Environment.GetEnvironmentVariable("SMTP_ENABLESSL")) ? SecureSocketOptions.StartTls : SecureSocketOptions.None
-            );
-            await client.AuthenticateAsync(
-                Environment.GetEnvironmentVariable("SMTP_USER"),
-                Environment.GetEnvironmentVariable("SMTP_PASS")
-            );
-            await client.SendAsync(message);
-            await client.DisconnectAsync(true);
+                using var client = new SmtpClient();
 
-            ViewBag.Message = "Message sent successfully!";
+                // 🔧 SMTP Settings (example: Gmail)
+                string smtpHost = "smtp.gmail.com";
+                int smtpPort = 587;
+                bool smtpEnableSsl = true;
+                string smtpUser = "ruzzaayoub@gmail.com"; // your sending Gmail
+                string smtpPass = "oiro vtpp bqzs rzxy"; // Gmail app password, not your real password
+
+                await client.ConnectAsync(smtpHost, smtpPort, smtpEnableSsl ? SecureSocketOptions.StartTls : SecureSocketOptions.None);
+                await client.AuthenticateAsync(smtpUser, smtpPass);
+                await client.SendAsync(message);
+                await client.DisconnectAsync(true);
+
+                ViewBag.Message = "✅ Message sent successfully!";
+            }
+            catch (Exception ex)
+            {
+                ViewBag.Message = $"❌ Error: {ex.Message}";
+            }
+
             return View();
         }
 
