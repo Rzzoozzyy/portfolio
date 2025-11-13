@@ -84,6 +84,11 @@ namespace PortfolioMvc.Controllers
             return View();
         }
 
+        public IActionResult Privacy()
+        {
+            return View();
+        }
+
         [HttpPost]
         public async Task<IActionResult> Contact(ContactModel model)
         {
@@ -125,10 +130,6 @@ namespace PortfolioMvc.Controllers
         }
 
 
-        public IActionResult Privacy()
-        {
-            return View();
-        }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
