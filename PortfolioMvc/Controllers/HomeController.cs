@@ -90,9 +90,18 @@ namespace PortfolioMvc.Controllers
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public async Task<IActionResult> Contact(ContactModel model)
         {
-            if (!ModelState.IsValid) return View(model);
+            if (!ModelState.IsValid)
+            {
+                if (Request.Headers["X-Requested-With"] == "XMLHttpRequest")
+                {
+                    // Return JSON for AJAX requests
+                    return BadRequest(new { message = "Please correct the validation errors.", errors = ModelState });
+                }
+                return View(model);
+            }
 
             try
             {
@@ -119,14 +128,28 @@ namespace PortfolioMvc.Controllers
                 await client.SendAsync(message);
                 await client.DisconnectAsync(true);
 
+                if (Request.Headers["X-Requested-With"] == "XMLHttpRequest")
+                {
+                    // Return JSON success for AJAX requests
+                    return Json(new { success = true, message = "Message sent successfully!" });
+                }
+
                 ViewBag.Message = "✅ Message sent successfully!";
+                return View();
             }
             catch (Exception ex)
             {
-                ViewBag.Message = $"❌ Error: {ex.Message}";
-            }
+                _logger.LogError(ex, "Error sending contact form message");
+                
+                if (Request.Headers["X-Requested-With"] == "XMLHttpRequest")
+                {
+                    // Return JSON error for AJAX requests
+                    return StatusCode(500, new { message = "An error occurred while sending your message. Please try again later." });
+                }
 
-            return View();
+                ViewBag.Message = $"❌ Error: {ex.Message}";
+                return View(model);
+            }
         }
 
 

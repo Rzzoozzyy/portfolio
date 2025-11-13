@@ -184,7 +184,8 @@
 
         function isValidEmail(email) {
             // Simple email validation
-            const atIndex = email.indexOf('@@');
+            const atSymbol = '@@';
+            const atIndex = email.indexOf(atSymbol);
             const dotIndex = email.lastIndexOf('.');
             return atIndex > 0 && dotIndex > atIndex && dotIndex < email.length - 1;
         }
