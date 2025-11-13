@@ -40,7 +40,7 @@
 
             <nav id="navmenu" class="navmenu">
                 <ul>
-                    <li><a href="/" class="active">Home</a></li>
+                    <li><a href="/">Home</a></li>
                     <li><a href="/Home/About">About</a></li>
                     <li><a href="/Home/Resume">Resume</a></li>
                     <li><a href="/Home/Services">Services</a></li>
@@ -108,5 +108,41 @@
     <script src="~/assets/js/main.js"></script>
 
     @RenderSection("Scripts", required: false)
+
+    <script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const currentPath = window.location.pathname.toLowerCase();
+        const navMenu = document.querySelector("#navmenu");
+        const navLinks = navMenu.querySelectorAll("ul li a");
+        const mobileToggle = document.querySelector(".mobile-nav-toggle");
+
+        // Highlight the active link
+        navLinks.forEach(link => {
+            const linkPath = link.getAttribute("href").toLowerCase();
+
+            if (currentPath === linkPath || 
+                (currentPath === "/" && linkPath === "/")) {
+                link.classList.add("active");
+            } else {
+                link.classList.remove("active");
+            }
+
+            // Handle mobile menu click
+            link.addEventListener("click", function () {
+                // Close mobile menu when a link is clicked
+                if (document.body.classList.contains("mobile-nav-active")) {
+                    document.body.classList.remove("mobile-nav-active");
+                    mobileToggle.classList.toggle("bi-x");
+                    mobileToggle.classList.toggle("bi-list");
+                }
+
+                // Update active link on click
+                navLinks.forEach(l => l.classList.remove("active"));
+                this.classList.add("active");
+            });
+        });
+    });
+</script>
+
 </body>
 </html>
