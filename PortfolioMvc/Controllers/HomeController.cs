@@ -58,6 +58,12 @@ namespace PortfolioMvc.Controllers
                     Description = "Web-based platform for managing government services, citizen requests, and feedback with dashboard analytics.",
                     Link = "#",
                     ImageUrl = "/assets/img/public.png"
+                },
+                 new ProjectModel {
+                    Title = "Menu for Cafe",
+                    Description = "A digital café menu with photos, prices, and Cafe information.",
+                    Link = "#",
+                    ImageUrl = "/assets/img/menuCafe.png"
                 }
             };
 
